@@ -2,7 +2,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const activitiesList = document.getElementById("activities-list");
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
-  const messageDiv = document.getElementById("message");
+  const messageDiv = document.getElementById("message");  // ...existing code...
+  
+  // Populate activities list
+  Object.entries(activities).forEach(([name, details]) => {
+    const activityCard = document.createElement("div");
+    activityCard.className = "activity-card";
+  
+    const spotsLeft = details.max_participants - details.participants.length;
+  
+    // Create a list of participants
+    const participantsList = details.participants.length
+      ? `<ul>${details.participants.map(participant => `<li>${participant}</li>`).join("")}</ul>`
+      : "<p>No participants yet.</p>";
+  
+    activityCard.innerHTML = `
+      <h4>${name}</h4>
+      <p>${details.description}</p>
+      <p><strong>Schedule:</strong> ${details.schedule}</p>
+      <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+      <div class="participants-section">
+        <h5>Participants:</h5>
+        ${participantsList}
+      </div>
+    `;
+  
+    activitiesList.appendChild(activityCard);
+  
+    // Add option to select dropdown
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    activitySelect.appendChild(option);
+  });
+  
+  // ...existing code...
 
   // Function to fetch activities from API
   async function fetchActivities() {
