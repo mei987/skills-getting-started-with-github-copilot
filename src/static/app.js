@@ -18,13 +18,122 @@ document.addEventListener("DOMContentLoaded", () => {
         const activityCard = document.createElement("div");
         activityCard.className = "activity-card";
 
-        const spotsLeft = details.max_participants - details.participants.length;
+        const spotsLeft = details.max_participants - details.participants.length;        /* ...existing code... */
+        
+        .participants-section {
+          margin-top: 15px;
+          padding: 10px;
+          background-color: #eef7ff;
+          border: 1px solid #cce4ff;
+          border-radius: 5px;
+        }
+        
+        .participants-section h5 {
+          margin-bottom: 10px;
+          color: #0056b3;
+        }
+        
+        .participants-section ul {
+          list-style-type: disc;
+          margin-left: 20px;
+        }
+        
+        .participants-section li {
+          margin-bottom: 5px;
+          color: #333;
+        }
+        
+        /* ...existing code... */
+
+        /* ...existing code... */
+        
+        .participants-section {
+          margin-top: 15px;
+          padding: 10px;
+          background-color: #eef7ff;
+          border: 1px solid #cce4ff;
+          border-radius: 5px;
+        }
+        
+        .participants-section h5 {
+          margin-bottom: 10px;
+          color: #0056b3;
+        }
+        
+        .participants-section ul {
+          list-style-type: disc;
+          margin-left: 20px;
+        }
+        
+        .participants-section li {
+          margin-bottom: 5px;
+          color: #333;
+        }
+        
+        /* ...existing code... */        /* ...existing code... */
+        
+        .participants-section {
+          margin-top: 15px;
+          padding: 10px;
+          background-color: #eef7ff;
+          border: 1px solid #cce4ff;
+          border-radius: 5px;
+        }
+        
+        .participants-section h5 {
+          margin-bottom: 10px;
+          color: #0056b3;
+        }
+        
+        .participants-section ul {
+          list-style-type: disc;
+          margin-left: 20px;
+        }
+        
+        .participants-section li {
+          margin-bottom: 5px;
+          color: #333;
+        }
+        
+        /* ...existing code... */        /* ...existing code... */
+        
+        .participants-section {
+          margin-top: 15px;
+          padding: 10px;
+          background-color: #eef7ff;
+          border: 1px solid #cce4ff;
+          border-radius: 5px;
+        }
+        
+        .participants-section h5 {
+          margin-bottom: 10px;
+          color: #0056b3;
+        }
+        
+        .participants-section ul {
+          list-style-type: disc;
+          margin-left: 20px;
+        }
+        
+        .participants-section li {
+          margin-bottom: 5px;
+          color: #333;
+        }
+        
+        /* ...existing code... */        // Create a list of participants
+        const participantsList = details.participants.length
+          ? `<ul>${details.participants.map(participant => `<li>${participant}</li>`).join("")}</ul>`
+          : "<p>No participants yet.</p>";
 
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          <div class="participants-section">
+            <h5>Participants:</h5>
+            ${participantsList}
+          </div>
         `;
 
         activitiesList.appendChild(activityCard);
